@@ -16,7 +16,7 @@ public class Helper {
             return true;
         return false;
     }
-  
+
     public static boolean isNegative(int b){
         if(b < 0)
             return true;
@@ -29,8 +29,13 @@ public class Helper {
         return false;
     }
 
+
     public static String generateID(){
         return UUID.randomUUID().toString();
     }
-}
 
+    public static long generateUniqueID() {
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+
+    }
+}
