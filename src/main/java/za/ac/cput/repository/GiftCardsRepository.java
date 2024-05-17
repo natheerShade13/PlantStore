@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.GiftCards;
 
 @Repository
-public interface GiftCardsRepository extends JpaRepository<GiftCards, String> {
+public interface GiftCardsRepository extends JpaRepository<GiftCards, Long> {
 }
