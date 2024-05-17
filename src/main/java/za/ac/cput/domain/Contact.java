@@ -10,10 +10,7 @@ public class Contact {
     private String mobileNumber;
     private String workNumber;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name = "streetNumber", referencedColumnName = "streetNumber"),
-            @JoinColumn(name = "streetName", referencedColumnName = "streetName")
-    })
+    @JoinColumn(name = "addressId")
     private Address address;
 
     protected Contact() {

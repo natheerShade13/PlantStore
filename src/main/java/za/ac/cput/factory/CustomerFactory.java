@@ -7,11 +7,10 @@ import za.ac.cput.utility.Helper;
 public class CustomerFactory {
 
     public static Customer createCustomer(long Id, String firstName, String lastName, Contact contact){
-        if(Id<0||
-                Helper.isNullOrEmpty(firstName) ||
+        if(Id<0|| Helper.isNullOrEmpty(firstName) ||
                 Helper.isNullOrEmpty(lastName)||
-                Helper.isContactNullOrEmpty(contact));
-
+                Helper.isContactNullOrEmpty(contact)){
+        return null;}
 
         return new Customer.Builder()
                 .setId(Id)
