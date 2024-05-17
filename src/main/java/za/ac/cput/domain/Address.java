@@ -1,18 +1,12 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-
-import java.util.Objects;
 
 @Entity
-@IdClass(AddressId.class)
 public class Address {
-    @Id
-    private int streetNumber;
-    @Id
-    private String streetName;
+    @EmbeddedId
+    private AddressId addressId;
     private String suburb;
     private String city;
     private String zipCode;
@@ -21,45 +15,16 @@ public class Address {
     protected Address() {
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "streetNumber=" + streetNumber +
-                ", streetName='" + streetName + '\'' +
-                ", suburb='" + suburb + '\'' +
-                ", city='" + city + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", province='" + province + '\'' +
-                '}';
+    private Address(Builder builder) {
+        this.addressId = new AddressId(builder.streetNumber, builder.streetName);
+        this.suburb = builder.suburb;
+        this.city = builder.city;
+        this.zipCode = builder.zipCode;
+        this.province = builder.province;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address address)) return false;
-        return getStreetNumber() == address.getStreetNumber() && Objects.equals(getStreetName(), address.getStreetName()) && Objects.equals(getSuburb(), address.getSuburb()) && Objects.equals(getCity(), address.getCity()) && Objects.equals(getZipCode(), address.getZipCode()) && Objects.equals(getProvince(), address.getProvince());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getStreetNumber(), getStreetName(), getSuburb(), getCity(), getZipCode(), getProvince());
-    }
-
-    public Address(Builder builder) {
-        this.streetNumber =  builder.streetNumber;
-        this.streetName = builder.streetName;
-        this.suburb =  builder.suburb;
-        this.city =  builder.city;
-        this.zipCode =  builder.zipCode;
-        this.province =  builder.province;
-    }
-
-    public int getStreetNumber() {
-        return streetNumber;
-    }
-
-    public String getStreetName() {
-        return streetName;
+    public AddressId getAddressId() {
+        return addressId;
     }
 
     public String getSuburb() {
@@ -77,7 +42,8 @@ public class Address {
     public String getProvince() {
         return province;
     }
-    public static class Builder{
+
+    public static class Builder {
         private int streetNumber;
         private String streetName;
         private String suburb;
@@ -118,7 +84,7 @@ public class Address {
             return this;
         }
 
-        public Address build(){
+        public Address build() {
             return new Address(this);
         }
     }

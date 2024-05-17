@@ -71,22 +71,26 @@ public class Contact {
 
         public Builder() {
         }
-
-        public String getEmail() {
-            return email;
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
         }
 
-        public String getMobileNumber() {
-            return mobileNumber;
+        public Builder setMobileNumber(String mobileNumber) {
+            this.mobileNumber = mobileNumber;
+            return this;
         }
 
-        public String getWorkNumber() {
-            return workNumber;
+        public Builder setWorkNumber(String workNumber) {
+            this.workNumber = workNumber;
+            return this;
         }
 
-        public Address getAddress() {
-            return address;
+        public Builder setAddress(Address address) {
+            this.address = address;
+            return this;
         }
+
         public Contact build(){
             return new Contact(this);
         }
