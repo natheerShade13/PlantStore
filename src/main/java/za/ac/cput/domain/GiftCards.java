@@ -1,9 +1,7 @@
 package za.ac.cput.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -12,7 +10,8 @@ import java.util.Objects;
 public class GiftCards {
 
     @Id
-    private String giftCardId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long giftCardId;
     private int number;
     private int pin;
     private double amount;
@@ -33,7 +32,7 @@ public class GiftCards {
         return amount;
     }
 
-    public String getGiftCardId() {
+    public long getGiftCardId() {
         return giftCardId;
     }
 
@@ -75,7 +74,7 @@ public class GiftCards {
 
     public static class Builder{
 
-        private String giftCardId;
+        private long giftCardId;
         private int number;
         private int pin;
         private double amount;
@@ -86,7 +85,7 @@ public class GiftCards {
             return this;
         }
 
-        public Builder setGiftCardId(String giftCardId) {
+        public Builder setGiftCardId(long giftCardId) {
             this.giftCardId = giftCardId;
             return this;
         }
