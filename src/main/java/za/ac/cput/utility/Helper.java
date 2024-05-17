@@ -4,14 +4,21 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Helper {
-    public static boolean isNullorEmpty(String s){
-        if(s == null || s.isEmpty())
+    public static boolean isNullOrEmpty(String a){
+        if (a == null || a.isEmpty()) {
             return true;
+        }
         return false;
     }
 
     public static boolean isNull(Date date){
         if (date == null)
+            return true;
+        return false;
+    }
+  
+    public static boolean isNegative(int b){
+        if(b < 0)
             return true;
         return false;
     }
@@ -22,7 +29,7 @@ public class Helper {
         return false;
     }
 
-    public static String generatesId(){
+    public static String generateID(){
         return UUID.randomUUID().toString();
     }
 }
