@@ -3,6 +3,8 @@ package za.ac.cput.domain;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
+import java.util.Objects;
+
 @Entity
 public class Address {
     @EmbeddedId
@@ -41,6 +43,29 @@ public class Address {
 
     public String getProvince() {
         return province;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address address)) return false;
+        return Objects.equals(getAddressId(), address.getAddressId()) && Objects.equals(getSuburb(), address.getSuburb()) && Objects.equals(getCity(), address.getCity()) && Objects.equals(getZipCode(), address.getZipCode()) && Objects.equals(getProvince(), address.getProvince());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAddressId(), getSuburb(), getCity(), getZipCode(), getProvince());
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", suburb='" + suburb + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", province='" + province + '\'' +
+                '}';
     }
 
     public static class Builder {
