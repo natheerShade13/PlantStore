@@ -11,8 +11,8 @@ public class OrderFactory {
         if(orderId < 0 ||
                 Helper.isNull(orderDate) ||
                 Helper.isNegative(totalAmount) ||
-                Helper.isNullorEmpty(status) ||
-                Helper.isNullorEmpty(orderLine))
+                Helper.isNullOrEmpty(status) ||
+                Helper.isNullOrEmpty(orderLine))
             return null;
 
 

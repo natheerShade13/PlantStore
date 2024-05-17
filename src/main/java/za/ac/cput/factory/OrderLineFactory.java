@@ -5,7 +5,7 @@ import za.ac.cput.utility.Helper;
 
 public class OrderLineFactory {
     public static OrderLine buildOrderLine(long orderLineId, String item, int quantity, double price){
-        if( orderLineId < 0 || Helper.isNullorEmpty(item) ||
+        if( orderLineId < 0 || Helper.isNullOrEmpty(item) ||
                 quantity < 0 || Helper.isNegative(price))
             return null;
 
