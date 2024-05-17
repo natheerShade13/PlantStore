@@ -26,7 +26,7 @@ class GiftCardsFactoryTest {
 
     @Test
     @Order(2)
-    void testBuildGiftCards() {
+    void copyBuildGiftCards() {
         giftCardC = GiftCardsFactory.buildGiftCards(123456789, 100, 4561, 1000
                 , false);
         giftCardB = new GiftCards.Builder().copy(giftCardC).setAmount(5000).build();

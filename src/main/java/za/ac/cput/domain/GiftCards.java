@@ -17,7 +17,7 @@ public class GiftCards {
     private double amount;
     private boolean isUsed;
 
-    public GiftCards() {
+    protected GiftCards() {
     }
 
     public GiftCards(Builder builder){
