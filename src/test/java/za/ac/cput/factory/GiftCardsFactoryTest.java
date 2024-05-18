@@ -13,11 +13,12 @@ class GiftCardsFactoryTest {
 
     private GiftCards giftCardA;
     private GiftCards giftCardB;
+    private GiftCards giftCardC;
 
     @Test
     @Order(1)
     void buildGiftCards() {
-        giftCardA = GiftCardsFactory.buildGiftCards("823456951", 100, 4561, 1000
+        giftCardA = GiftCardsFactory.buildGiftCards(123456789, 100, 4561, 1000
                 , false);
         assertNotNull(giftCardA);
         System.out.println(giftCardA);
@@ -26,7 +27,9 @@ class GiftCardsFactoryTest {
     @Test
     @Order(2)
     void testBuildGiftCards() {
-        giftCardB = GiftCardsFactory.buildGiftCards(200,3697, 5000, true);
+        giftCardC = GiftCardsFactory.buildGiftCards(123456789, 100, 4561, 1000
+                , false);
+        giftCardB = new GiftCards.Builder().copy(giftCardC).setAmount(5000).build();
         assertNotNull(giftCardB);
         System.out.println(giftCardB);
     }
