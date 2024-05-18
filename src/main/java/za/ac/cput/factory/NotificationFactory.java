@@ -27,7 +27,7 @@ public class NotificationFactory {
             return null;
         }
 
-        long notificationId = Helper.generateID(); // Assuming generateID returns a long
+        long notificationId = Helper.generateUniqueID(); // Assuming generateID returns a long
 
         return new Notification.Builder()
                 .setNotificationId(notificationId)
