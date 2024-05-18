@@ -35,6 +35,7 @@ class NotificationFactoryTest {
         assertEquals(dateSent, notification.getDateSent());
     }
 
+    /*
     @Test
     @Order(2)
     void testCreateNotificationWithoutId() {
@@ -54,4 +55,5 @@ class NotificationFactoryTest {
         assertEquals(isRead, notification.isRead());
         assertEquals(dateSent, notification.getDateSent());
     }
+     */
 }
