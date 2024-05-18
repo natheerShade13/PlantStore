@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Product;
-import za.ac.cput.utility.ProductHelper;
+import za.ac.cput.utility.Helper;
 
 public class ProductFactory {
 
@@ -9,9 +9,8 @@ public class ProductFactory {
         if (name == null || name.isEmpty() || description == null || description.isEmpty() || price <= 0 || sku == null || sku.isEmpty() || categoryId <= 0) {
             return null;
         }
-        long productId = ProductHelper.generateUniqueID();
+
         return new Product.Builder()
-                .setProductId(productId)
                 .setName(name)
                 .setDescription(description)
                 .setPrice(price)

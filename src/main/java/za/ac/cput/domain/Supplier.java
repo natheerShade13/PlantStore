@@ -29,25 +29,6 @@ public class Supplier {
         this.email = builder.email;
     }
 
-    public String getSupplierID() {
-        return supplierID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -62,8 +43,18 @@ public class Supplier {
         return Objects.hash(supplierID, firstName, lastName, email, phoneNumber);
     }
 
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "supplierID='" + supplierID + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
     public static class Builder{
-    @Id
     private String supplierID;
     private String firstName;
     private String lastName;

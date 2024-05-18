@@ -14,7 +14,7 @@ public class Customer {
     @JoinColumn(name = "email")
     private Contact contact;
 
-    protected Customer() {
+    public Customer() {
     }
 
     public Customer(Builder builder) {
