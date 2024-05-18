@@ -33,4 +33,9 @@ public class Helper {
     public static String generateID(){
         return UUID.randomUUID().toString();
     }
+  
+    public static long generateUniqueID() {
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+
+    }
 }

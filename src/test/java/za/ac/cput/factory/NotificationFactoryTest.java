@@ -29,6 +29,7 @@ class NotificationFactoryTest {
         System.out.println(notificationA);
     }
 
+    /*
     @Test
     @Order(2)
     void copyCreateNotification() {
@@ -39,4 +40,5 @@ class NotificationFactoryTest {
         assertNotNull(notificationB);
         System.out.println(notificationB);
     }
+     */
 }

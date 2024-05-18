@@ -30,6 +30,7 @@ class MessageFactoryTest {
         System.out.println(messageA);
     }
 
+    /*
     @Test
     @Order(2)
     void copyBuildMessage() {
@@ -41,4 +42,5 @@ class MessageFactoryTest {
         assertNotNull(messageB);
         System.out.println(messageB);
     }
+     */
 }

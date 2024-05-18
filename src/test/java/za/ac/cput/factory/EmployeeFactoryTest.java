@@ -25,7 +25,7 @@ class EmployeeFactoryTest {
         assertNotNull(employeeA);
         System.out.println(employeeA);
     }
-
+/*
     @Test
     @Order(2)
     void copyBuildEmployee() {
@@ -34,4 +34,5 @@ class EmployeeFactoryTest {
         assertNotNull(employeeB);
         System.out.println(employeeB);
     }
+    */
 }

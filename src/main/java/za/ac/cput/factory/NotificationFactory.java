@@ -10,7 +10,7 @@ public class NotificationFactory {
 
     public static Notification createNotification(long notificationId, Customer customer, String message, boolean isRead, Date dateSent) {
         if (customer == null || Helper.isNullOrEmpty(message) || dateSent == null || notificationId <= 0) {
-            return null; // Ensure all necessary fields are provided and notificationId is valid
+            return null;
         }
 
         return new Notification.Builder()
