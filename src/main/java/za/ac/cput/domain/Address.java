@@ -1,17 +1,25 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "address")
 public class Address {
     @EmbeddedId
+    @Column(name = "addressId", nullable = false)
     private AddressId addressId;
+    @Column(name = "surburb")
     private String suburb;
+    @Column(name = "city")
     private String city;
+    @Column(name = "zipCode")
     private String zipCode;
+    @Column(name = "province")
     private String province;
 
     protected Address() {

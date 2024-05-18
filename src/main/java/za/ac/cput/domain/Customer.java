@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 @Entity
+@Table(name = "customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastname;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "email")
