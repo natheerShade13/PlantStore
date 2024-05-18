@@ -24,7 +24,7 @@ public class EmployeeFactory {
                 .setMessages(messages)
                 .build();
     }
-
+/*
     public static Employee buildEmployee(String name, String email, String address, String phone, String role, List<Message> messages) {
         if (Helper.isNullOrEmpty(name) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(address)
                 || Helper.isNullOrEmpty(phone) || Helper.isNullOrEmpty(role)) {
@@ -43,4 +43,5 @@ public class EmployeeFactory {
                 .setMessages(messages)
                 .build();
     }
+    */
 }
