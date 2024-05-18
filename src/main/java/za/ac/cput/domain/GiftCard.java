@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table
-public class GiftCards {
+public class GiftCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,10 @@ public class GiftCards {
     private double amount;
     private boolean isUsed;
 
-    protected GiftCards() {
+    protected GiftCard() {
     }
 
-    public GiftCards(Builder builder){
+    public GiftCard(Builder builder){
         this.giftCardId = builder.giftCardId;
         this.number = builder.number;
         this.pin = builder.pin;
@@ -52,8 +52,8 @@ public class GiftCards {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GiftCards giftCards = (GiftCards) o;
-        return number == giftCards.number && pin == giftCards.pin && amount == giftCards.amount && isUsed == giftCards.isUsed && Objects.equals(giftCardId, giftCards.giftCardId);
+        GiftCard giftCard = (GiftCard) o;
+        return number == giftCard.number && pin == giftCard.pin && amount == giftCard.amount && isUsed == giftCard.isUsed && Objects.equals(giftCardId, giftCard.giftCardId);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class GiftCards {
 
     @Override
     public String toString() {
-        return "GiftCards{" +
+        return "GiftCard{" +
                 "giftCardId='" + giftCardId + '\'' +
                 ", amount=" + amount +
                 ", number=" + number +
@@ -105,18 +105,18 @@ public class GiftCards {
             return this;
         }
 
-        public Builder copy(GiftCards giftCards){
+        public Builder copy(GiftCard giftCard){
 
-            this.giftCardId = giftCards.giftCardId;
-            this.number = giftCards.number;
-            this.pin = giftCards.pin;
-            this.amount = giftCards.amount;
-            this.isUsed = giftCards.isUsed;
+            this.giftCardId = giftCard.giftCardId;
+            this.number = giftCard.number;
+            this.pin = giftCard.pin;
+            this.amount = giftCard.amount;
+            this.isUsed = giftCard.isUsed;
             return this;
 
         }
 
-        public GiftCards build(){return new GiftCards(this);}
+        public GiftCard build(){return new GiftCard(this);}
 
     }
 

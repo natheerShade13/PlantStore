@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table
-public class Promotions {
+public class Promotion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class Promotions {
     private String discountType;
     private double discountAmount;
 
-    protected Promotions() {
+    protected Promotion() {
     }
 
-    public Promotions(Builder builder){
+    public Promotion(Builder builder){
         this.promotionId = builder.promotionId;
         this.name = builder.name;
         this.description = builder.description;
@@ -65,7 +65,7 @@ public class Promotions {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Promotions that = (Promotions) o;
+        Promotion that = (Promotion) o;
         return Double.compare(discountAmount, that.discountAmount) == 0 && Objects.equals(promotionId, that.promotionId) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(discountType, that.discountType);
     }
 
@@ -76,7 +76,7 @@ public class Promotions {
 
     @Override
     public String toString() {
-        return "Promotions{" +
+        return "Promotion{" +
                 "description='" + description + '\'' +
                 ", promotionId='" + promotionId + '\'' +
                 ", name='" + name + '\'' +
@@ -132,18 +132,18 @@ public class Promotions {
             return this;
         }
 
-        public Builder copy(Promotions promotions){
-            this.promotionId = promotions.promotionId;
-            this.name = promotions.name;
-            this.description = promotions.description;
-            this.startDate = promotions.startDate;
-            this.endDate = promotions.endDate;
-            this.discountType = promotions.discountType;
-            this.discountAmount = promotions.discountAmount;
+        public Builder copy(Promotion promotion){
+            this.promotionId = promotion.promotionId;
+            this.name = promotion.name;
+            this.description = promotion.description;
+            this.startDate = promotion.startDate;
+            this.endDate = promotion.endDate;
+            this.discountType = promotion.discountType;
+            this.discountAmount = promotion.discountAmount;
             return this;
         }
 
-        public Promotions Build(){return new Promotions(this);}
+        public Promotion Build(){return new Promotion(this);}
 
     }
 
