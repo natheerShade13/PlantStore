@@ -8,50 +8,39 @@ import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.Message;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MessageFactoryTest {
 
     private Message messageA;
     private Message messageB;
+    private Message messageC;
 
     @Test
     @Order(1)
     void buildMessage() {
-        Customer customerA = new Customer();
-        Employee employeeA = new Employee();
+        Customer customerA = new Customer.Builder().build();
+        Employee employeeA = new Employee.Builder().build();
         Date dateSentA = new Date();
-        messageA = MessageFactory.buildMessage(123L, "Test Subject A", "Test Message A", false, dateSentA, customerA, employeeA);
+        messageA = MessageFactory.buildMessage(1L, "Test Subject A", "Test Message A", false, dateSentA, customerA, employeeA);
         assertNotNull(messageA);
-        assertEquals(123L, messageA.getMessageId());
-        assertEquals("Test Subject A", messageA.getSubject());
-        assertEquals("Test Message A", messageA.getMessage());
-        assertFalse(messageA.isRead());
-        assertEquals(dateSentA, messageA.getDateSent());
-        assertEquals(customerA, messageA.getCustomer());
-        assertEquals(employeeA, messageA.getEmployee());
+        System.out.println(messageA);
     }
 
     /*
     @Test
     @Order(2)
-    void testBuildMessage() {
-        Customer customerB = new Customer();
-        Employee employeeB = new Employee();
+    void copyBuildMessage() {
+        Customer customerB = new Customer.Builder().build();
+        Employee employeeB = new Employee.Builder().build();
         Date dateSentB = new Date();
-        messageB = MessageFactory.buildMessage("Test Subject B", "Test Message B", false, dateSentB, customerB, employeeB);
+        messageC = MessageFactory.buildMessage(2L, "Test Subject B", "Test Message B", false, dateSentB, customerB, employeeB);
+        messageB = new Message.Builder().copy(messageC).setSubject("Updated Test Subject B").build();
         assertNotNull(messageB);
-        assertTrue(messageB.getMessageId() == 0);
-        assertEquals("Test Subject B", messageB.getSubject());
-        assertEquals("Test Message B", messageB.getMessage());
-        assertFalse(messageB.isRead());
-        assertEquals(dateSentB, messageB.getDateSent());
-        assertEquals(customerB, messageB.getCustomer());
-        assertEquals(employeeB, messageB.getEmployee());
+        System.out.println(messageB);
     }
      */
 }

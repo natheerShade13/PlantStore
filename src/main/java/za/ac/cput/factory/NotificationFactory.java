@@ -22,7 +22,6 @@ public class NotificationFactory {
                 .build();
     }
 
-    /*
     public static Notification createNotification(Customer customer, String message, boolean isRead, Date dateSent) {
         if (customer == null || Helper.isNullOrEmpty(message) || dateSent == null) {
             return null;
@@ -38,5 +37,4 @@ public class NotificationFactory {
                 .setDateSent(dateSent)
                 .build();
     }
-    */
 }

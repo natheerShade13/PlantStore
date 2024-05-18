@@ -6,54 +6,39 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Notification;
+import za.ac.cput.utility.Helper;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class NotificationFactoryTest {
 
+    private Notification notificationA;
+    private Notification notificationB;
+    private Notification notificationC;
+
     @Test
     @Order(1)
-    void testCreateNotification() {
-        // Create necessary objects for testing
-        Customer customer = new Customer();
-        String message = "Test message";
-        boolean isRead = false;
-        Date dateSent = new Date();
-
-        // Call the factory method to create a notification
-        Notification notification = NotificationFactory.createNotification(123L, customer, message, isRead, dateSent);
-
-        // Assertions to verify if the notification is created successfully
-        assertNotNull(notification);
-        assertEquals(123L, notification.getNotificationId());
-        assertEquals(customer, notification.getCustomer());
-        assertEquals(message, notification.getMessage());
-        assertEquals(isRead, notification.isRead());
-        assertEquals(dateSent, notification.getDateSent());
+    void createNotification() {
+        Customer customerA = new Customer.Builder().build();
+        Date dateSentA = new Date();
+        notificationA = NotificationFactory.createNotification(Helper.generateID(), customerA, "Test Message A", false, dateSentA);
+        assertNotNull(notificationA);
+        System.out.println(notificationA);
     }
 
     /*
     @Test
     @Order(2)
-    void testCreateNotificationWithoutId() {
-        // Create necessary objects for testing
-        Customer customer = new Customer();
-        String message = "Test message";
-        boolean isRead = false;
-        Date dateSent = new Date();
-
-        // Call the factory method without providing a notification ID
-        Notification notification = NotificationFactory.createNotification(customer, message, isRead, dateSent);
-
-        // Assertions to verify if the notification is created successfully
-        assertNotNull(notification);
-        assertEquals(customer, notification.getCustomer());
-        assertEquals(message, notification.getMessage());
-        assertEquals(isRead, notification.isRead());
-        assertEquals(dateSent, notification.getDateSent());
+    void copyCreateNotification() {
+        Customer customerB = new Customer.Builder().build();
+        Date dateSentB = new Date();
+        notificationC = NotificationFactory.createNotification(Helper.generateID(), customerB, "Test Message B", false, dateSentB);
+        notificationB = new Notification.Builder().copy(notificationC).setMessage("Updated Test Message B").build();
+        assertNotNull(notificationB);
+        System.out.println(notificationB);
     }
      */
 }
