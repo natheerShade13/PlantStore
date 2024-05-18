@@ -1,6 +1,7 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.OrderLine;
+import za.ac.cput.utility.Helper;
 
 public class OrderLineFactory {
     public static OrderLine buildOrderLine(long orderLineId, String item, int quantity, double price){
