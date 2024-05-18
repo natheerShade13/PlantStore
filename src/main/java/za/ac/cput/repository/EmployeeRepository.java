@@ -2,8 +2,8 @@ package za.ac.cput.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import za.ac.cput.domain.Promotions;
+import za.ac.cput.domain.Employee;
 
 @Repository
-public interface PromotionsRepository extends JpaRepository <Promotions, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 }

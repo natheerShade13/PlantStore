@@ -1,2 +1,4 @@
-package za.ac.cput.utility;public class ProductsHelper {
+package za.ac.cput.utility;
+
+public class ProductsHelper {
 }

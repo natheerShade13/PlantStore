@@ -2,7 +2,6 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Contact;
-import za.ac.cput.utility.Helper;
 
 public class ContactFactory {
     public static Contact createContact(String email,String mobileNumber,String workNumber, Address address) {

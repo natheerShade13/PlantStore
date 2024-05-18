@@ -4,21 +4,21 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.GiftCards;
+import za.ac.cput.domain.GiftCard;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class GiftCardsFactoryTest {
+class GiftCardFactoryTest {
 
-    private GiftCards giftCardA;
-    private GiftCards giftCardB;
-    private GiftCards giftCardC;
+    private GiftCard giftCardA;
+    private GiftCard giftCardB;
+    private GiftCard giftCardC;
 
     @Test
     @Order(1)
     void buildGiftCards() {
-        giftCardA = GiftCardsFactory.buildGiftCards(123456789, 100, 4561, 1000
+        giftCardA = GiftCardFactory.buildGiftCards(123456789, 100, 4561, 1000
                 , false);
         assertNotNull(giftCardA);
         System.out.println(giftCardA);
@@ -27,9 +27,9 @@ class GiftCardsFactoryTest {
     @Test
     @Order(2)
     void copyBuildGiftCards() {
-        giftCardC = GiftCardsFactory.buildGiftCards(123456789, 100, 4561, 1000
+        giftCardC = GiftCardFactory.buildGiftCards(123456789, 100, 4561, 1000
                 , false);
-        giftCardB = new GiftCards.Builder().copy(giftCardC).setAmount(5000).build();
+        giftCardB = new GiftCard.Builder().copy(giftCardC).setAmount(5000).build();
         assertNotNull(giftCardB);
         System.out.println(giftCardB);
     }
