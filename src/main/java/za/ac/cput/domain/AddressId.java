@@ -36,4 +36,12 @@ public class AddressId implements Serializable {
     public int hashCode() {
         return Objects.hash(streetNumber, streetName);
     }
+
+    @Override
+    public String toString() {
+        return "AddressId{" +
+                "streetNumber=" + streetNumber +
+                ", streetName='" + streetName + '\'' +
+                '}';
+    }
 }
