@@ -24,7 +24,7 @@ class NotificationFactoryTest {
     void createNotification() {
         Customer customerA = new Customer.Builder().build();
         Date dateSentA = new Date();
-        notificationA = NotificationFactory.createNotification(Helper.generateID(), customerA, "Test Message A", false, dateSentA);
+        notificationA = NotificationFactory.createNotification(Helper.generateUniqueID(), customerA, "Test Message A", false, dateSentA);
         assertNotNull(notificationA);
         System.out.println(notificationA);
     }

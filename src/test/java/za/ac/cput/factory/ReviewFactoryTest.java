@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.core.annotation.Order;
 import za.ac.cput.domain.Review;
-import za.ac.cput.utility.ProductHelper;
+import za.ac.cput.utility.Helper;
 
 import java.time.LocalDate;
 
@@ -19,8 +19,8 @@ public class ReviewFactoryTest {
     @Test
     @Order(1)
     void createReview() {
-        long productIdA = ProductHelper.generateUniqueID();
-        long customerIdA = ProductHelper.generateUniqueID();
+        long productIdA = Helper.generateUniqueID();
+        long customerIdA = Helper.generateUniqueID();
         LocalDate reviewDateA = LocalDate.now();
         reviewA = ReviewFactory.createProductReview(productIdA, customerIdA, 5, "Beautiful and vibrant sunflowers", reviewDateA);
         Assertions.assertNotNull(reviewA);
@@ -36,8 +36,8 @@ public class ReviewFactoryTest {
     @Test
     @Order(2)
     void testCreateReview() {
-        long productIdB = ProductHelper.generateUniqueID();
-        long customerIdB = ProductHelper.generateUniqueID();
+        long productIdB = Helper.generateUniqueID();
+        long customerIdB = Helper.generateUniqueID();
         LocalDate reviewDateB = LocalDate.of(2021, 8, 10);
         reviewB = ReviewFactory.createProductReview(productIdB, customerIdB, 3, "Roses were nice but not fresh", reviewDateB);
         Assertions.assertNotNull(reviewB);
