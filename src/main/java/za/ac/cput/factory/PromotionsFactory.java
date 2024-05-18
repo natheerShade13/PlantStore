@@ -1,8 +1,6 @@
 package za.ac.cput.factory;
 
-import za.ac.cput.domain.GiftCards;
 import za.ac.cput.domain.Promotions;
-import za.ac.cput.utility.Helper;
 
 import java.util.Date;
 
