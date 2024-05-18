@@ -1,7 +1,11 @@
 package za.ac.cput.factory;
 
+<<<<<<< HEAD:src/main/java/za/ac/cput/factory/PromotionsFactory.java
+import za.ac.cput.domain.Promotions;
+=======
 import za.ac.cput.domain.Promotion;
 import za.ac.cput.utility.Helper;
+>>>>>>> master:src/main/java/za/ac/cput/factory/PromotionFactory.java
 
 import java.util.Date;
 
