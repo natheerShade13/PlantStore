@@ -1,10 +1,6 @@
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.BeforeEach;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Address;
 
@@ -18,8 +14,8 @@ class AddressFactoryTest {
     @BeforeEach
     void setUp() {
 
-        address1 = AddressFactory.createAddress(9, "Lower Street", "Mowbray", "Cape Town", "8001", "Western Cape");
-        address2 = AddressFactory.createAddress(13, "Willow Street", "", "Cape Town", "8002", "Western Cape");
+        address1 = AddressFactory.createAddress(1L, "9", "Lower Street", "Mowbray", "Cape Town", "8001", "Western Cape");
+        address2 = AddressFactory.createAddress(2L, "13", "Willow Street", "", "Cape Town", "8002", "Western Cape");
         address3 = address1;
     }
 

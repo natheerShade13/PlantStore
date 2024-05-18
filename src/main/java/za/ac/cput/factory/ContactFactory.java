@@ -11,10 +11,11 @@ public class ContactFactory {
             return null;
         }
 
-        return new Contact.Builder().setEmail(email)
-                .setMobileNumber(mobileNumber).setWorkNumber(workNumber)
-                .setAddress(address).build();
+        return new Contact.Builder()
+                .setEmail(email)
+                .setMobileNumber(mobileNumber)
+                .setWorkNumber(workNumber)
+                .setAddress(address)
+                .build();
     }
-
-
 }

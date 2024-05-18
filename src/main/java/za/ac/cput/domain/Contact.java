@@ -1,28 +1,38 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
-
 import java.util.Objects;
+
 @Entity
+@Table(name = "contacts")
 public class Contact {
+
     @Id
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "mobile_number")
     private String mobileNumber;
+
+    @Column(name = "work_number")
     private String workNumber;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
-    protected Contact() {
-    }
+    // Default constructor for JPA
+    protected Contact() {}
 
-    public Contact(Builder builder) {
+    // Private constructor to enforce the use of the builder
+    private Contact(Builder builder) {
         this.email = builder.email;
         this.mobileNumber = builder.mobileNumber;
         this.workNumber = builder.workNumber;
         this.address = builder.address;
     }
 
+    // Getters for each field
     public String getEmail() {
         return email;
     }
@@ -40,6 +50,22 @@ public class Contact {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Contact)) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(email, contact.email) &&
+                Objects.equals(mobileNumber, contact.mobileNumber) &&
+                Objects.equals(workNumber, contact.workNumber) &&
+                Objects.equals(address, contact.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, mobileNumber, workNumber, address);
+    }
+
+    @Override
     public String toString() {
         return "Contact{" +
                 "email='" + email + '\'' +
@@ -49,25 +75,14 @@ public class Contact {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Contact contact)) return false;
-        return Objects.equals(getEmail(), contact.getEmail()) && Objects.equals(getMobileNumber(), contact.getMobileNumber()) && Objects.equals(getWorkNumber(), contact.getWorkNumber()) && Objects.equals(getAddress(), contact.getAddress());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getEmail(), getMobileNumber(), getWorkNumber(), getAddress());
-    }
-    public static class Builder{
+    // Builder class
+    public static class Builder {
         private String email;
         private String mobileNumber;
         private String workNumber;
         private Address address;
 
-        public Builder() {
-        }
+        // Setter methods for each field returning Builder for chaining
         public Builder setEmail(String email) {
             this.email = email;
             return this;
@@ -88,7 +103,16 @@ public class Contact {
             return this;
         }
 
-        public Contact build(){
+        public Builder copy(Contact contact) {
+            this.email = contact.email;
+            this.mobileNumber = contact.mobileNumber;
+            this.workNumber = contact.workNumber;
+            this.address = contact.address;
+            return this;
+        }
+
+        // Build method to create an instance of Contact
+        public Contact build() {
             return new Contact(this);
         }
     }

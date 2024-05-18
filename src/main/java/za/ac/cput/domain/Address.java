@@ -1,32 +1,52 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "addresses")
 public class Address {
-    @EmbeddedId
-    private AddressId addressId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", nullable = false)
+    private long addressId;
+
+    @Column(name = "street_number", nullable = false)
+    private String streetNumber;
+
+    @Column(name = "suburb", nullable = false)
     private String suburb;
+
+    @Column(name = "city", nullable = false)
     private String city;
+
+    @Column(name = "zip_code", nullable = false)
     private String zipCode;
+
+    @Column(name = "province", nullable = false)
     private String province;
 
-    protected Address() {
-    }
+    // Default constructor for JPA
+    public Address() {}
 
+    // Private constructor to enforce the use of the builder
     private Address(Builder builder) {
-        this.addressId = new AddressId(builder.streetNumber, builder.streetName);
+        this.addressId = builder.addressId;
+        this.streetNumber = builder.streetNumber;
         this.suburb = builder.suburb;
         this.city = builder.city;
         this.zipCode = builder.zipCode;
         this.province = builder.province;
     }
 
-    public AddressId getAddressId() {
+    // Getters for each field
+    public long getAddressId() {
         return addressId;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
     }
 
     public String getSuburb() {
@@ -48,19 +68,26 @@ public class Address {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Address address)) return false;
-        return Objects.equals(getAddressId(), address.getAddressId()) && Objects.equals(getSuburb(), address.getSuburb()) && Objects.equals(getCity(), address.getCity()) && Objects.equals(getZipCode(), address.getZipCode()) && Objects.equals(getProvince(), address.getProvince());
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return addressId == address.addressId &&
+                Objects.equals(streetNumber, address.streetNumber) &&
+                Objects.equals(suburb, address.suburb) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(zipCode, address.zipCode) &&
+                Objects.equals(province, address.province);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAddressId(), getSuburb(), getCity(), getZipCode(), getProvince());
+        return Objects.hash(addressId, streetNumber, suburb, city, zipCode, province);
     }
 
     @Override
     public String toString() {
         return "Address{" +
                 "addressId=" + addressId +
+                ", streetNumber='" + streetNumber + '\'' +
                 ", suburb='" + suburb + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
@@ -68,24 +95,23 @@ public class Address {
                 '}';
     }
 
+    // Builder class
     public static class Builder {
-        private int streetNumber;
-        private String streetName;
+        private long addressId;
+        private String streetNumber;
         private String suburb;
         private String city;
         private String zipCode;
         private String province;
 
-        public Builder() {
-        }
-
-        public Builder setStreetNumber(int streetNumber) {
-            this.streetNumber = streetNumber;
+        // Setter methods for each field returning Builder for chaining
+        public Builder setAddressId(long addressId) {
+            this.addressId = addressId;
             return this;
         }
 
-        public Builder setStreetName(String streetName) {
-            this.streetName = streetName;
+        public Builder setStreetNumber(String streetNumber) {
+            this.streetNumber = streetNumber;
             return this;
         }
 
@@ -109,6 +135,17 @@ public class Address {
             return this;
         }
 
+        public Builder copy(Address address) {
+            this.addressId = address.addressId;
+            this.streetNumber = address.streetNumber;
+            this.suburb = address.suburb;
+            this.city = address.city;
+            this.zipCode = address.zipCode;
+            this.province = address.province;
+            return this;
+        }
+
+        // Build method to create an instance of Address
         public Address build() {
             return new Address(this);
         }
