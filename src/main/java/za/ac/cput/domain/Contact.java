@@ -4,10 +4,14 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 @Entity
+@Table(name = "contact")
 public class Contact {
     @Id
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+    @Column(name = "mobileNumber")
     private String mobileNumber;
+    @Column(name = "workNumber")
     private String workNumber;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
