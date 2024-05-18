@@ -26,6 +26,7 @@ public class MessageFactory {
                 .build();
     }
 
+    /*
     public static Message buildMessage(String subject, String messageContent, boolean isRead, Date dateSent, Customer customer, Employee employee) {
         if (Helper.isNullOrEmpty(subject) || Helper.isNullOrEmpty(messageContent) || dateSent == null
                 || customer == null || employee == null) {
@@ -44,4 +45,5 @@ public class MessageFactory {
                 .setEmployee(employee)
                 .build();
     }
+    */
 }
