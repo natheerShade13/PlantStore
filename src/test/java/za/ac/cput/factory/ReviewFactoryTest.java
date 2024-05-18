@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.core.annotation.Order;
 import za.ac.cput.domain.Review;
+import za.ac.cput.utility.ProductHelper;
 
 import java.time.LocalDate;
 
@@ -18,28 +19,34 @@ public class ReviewFactoryTest {
     @Test
     @Order(1)
     void createReview() {
+        long productIdA = ProductHelper.generateUniqueID();
+        long customerIdA = ProductHelper.generateUniqueID();
         LocalDate reviewDateA = LocalDate.now();
-        reviewA = ReviewFactory.createProductReview(1, 1, 5, "Beautiful and vibrant sunflowers", reviewDateA);
+        reviewA = ReviewFactory.createProductReview(productIdA, customerIdA, 5, "Beautiful and vibrant sunflowers", reviewDateA);
         Assertions.assertNotNull(reviewA);
-        Assertions.assertEquals(1, reviewA.getProductId());
-        Assertions.assertEquals(1, reviewA.getCustomerId());
+        Assertions.assertEquals(productIdA, reviewA.getProductId());
+        Assertions.assertEquals(customerIdA, reviewA.getCustomerId());
         Assertions.assertEquals(5, reviewA.getRating());
         Assertions.assertEquals("Beautiful and vibrant sunflowers", reviewA.getComment());
         Assertions.assertEquals(reviewDateA, reviewA.getReviewDate());
+        Assertions.assertTrue(reviewA.getReviewId() > 0); // Check reviewId is set
         System.out.println(reviewA);
     }
 
     @Test
     @Order(2)
     void testCreateReview() {
+        long productIdB = ProductHelper.generateUniqueID();
+        long customerIdB = ProductHelper.generateUniqueID();
         LocalDate reviewDateB = LocalDate.of(2021, 8, 10);
-        reviewB = ReviewFactory.createProductReview(2, 2, 3, "Roses were nice but not fresh", reviewDateB);
+        reviewB = ReviewFactory.createProductReview(productIdB, customerIdB, 3, "Roses were nice but not fresh", reviewDateB);
         Assertions.assertNotNull(reviewB);
-        Assertions.assertEquals(2, reviewB.getProductId());
-        Assertions.assertEquals(2, reviewB.getCustomerId());
+        Assertions.assertEquals(productIdB, reviewB.getProductId());
+        Assertions.assertEquals(customerIdB, reviewB.getCustomerId());
         Assertions.assertEquals(3, reviewB.getRating());
         Assertions.assertEquals("Roses were nice but not fresh", reviewB.getComment());
         Assertions.assertEquals(reviewDateB, reviewB.getReviewDate());
+        Assertions.assertTrue(reviewB.getReviewId() > 0); // Check reviewId is set
         System.out.println(reviewB);
     }
 }
