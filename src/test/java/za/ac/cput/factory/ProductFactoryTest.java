@@ -24,6 +24,7 @@ public class ProductFactoryTest {
         Assertions.assertEquals("imageUrl", productA.getImageUrl());
         Assertions.assertEquals("SKU123", productA.getSku());
         Assertions.assertEquals(1, productA.getCategoryId());
+        Assertions.assertTrue(productA.getProductId() > 0);
         System.out.println(productA);
     }
 
@@ -32,6 +33,5 @@ public class ProductFactoryTest {
     void testCreateProduct() {
         productB = ProductFactory.createProduct("", "Some description", 15.99, "imageUrl", "SKU124", 2);
         Assertions.assertNull(productB);
-
     }
 }
