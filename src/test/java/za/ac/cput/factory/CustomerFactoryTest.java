@@ -17,7 +17,7 @@ class CustomerFactoryTest {
     @BeforeEach
     void setUp() {
         Address address = new Address.Builder()
-                .setStreetNumber(10)
+                .setStreetNumber("10")
                 .setStreetName("Main Street")
                 .setSuburb("Suburb")
                 .setCity("City")

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "addresses")
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -14,6 +14,9 @@ public class Address {
 
     @Column(name = "street_number", nullable = false)
     private String streetNumber;
+
+    @Column(name = "street_name")
+    private String streetName;
 
     @Column(name = "suburb", nullable = false)
     private String suburb;
@@ -34,6 +37,7 @@ public class Address {
     private Address(Builder builder) {
         this.addressId = builder.addressId;
         this.streetNumber = builder.streetNumber;
+        this.streetName = builder.streetName;
         this.suburb = builder.suburb;
         this.city = builder.city;
         this.zipCode = builder.zipCode;
@@ -47,6 +51,10 @@ public class Address {
 
     public String getStreetNumber() {
         return streetNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
     }
 
     public String getSuburb() {
@@ -72,6 +80,7 @@ public class Address {
         Address address = (Address) o;
         return addressId == address.addressId &&
                 Objects.equals(streetNumber, address.streetNumber) &&
+                Objects.equals(streetName, address.streetName) &&
                 Objects.equals(suburb, address.suburb) &&
                 Objects.equals(city, address.city) &&
                 Objects.equals(zipCode, address.zipCode) &&
@@ -80,7 +89,7 @@ public class Address {
 
     @Override
     public int hashCode() {
-        return Objects.hash(addressId, streetNumber, suburb, city, zipCode, province);
+        return Objects.hash(addressId, streetNumber, streetName, suburb, city, zipCode, province);
     }
 
     @Override
@@ -88,6 +97,7 @@ public class Address {
         return "Address{" +
                 "addressId=" + addressId +
                 ", streetNumber='" + streetNumber + '\'' +
+                ", streetName='" + streetName + '\'' +
                 ", suburb='" + suburb + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
@@ -99,6 +109,7 @@ public class Address {
     public static class Builder {
         private long addressId;
         private String streetNumber;
+        private String streetName;
         private String suburb;
         private String city;
         private String zipCode;
@@ -112,6 +123,11 @@ public class Address {
 
         public Builder setStreetNumber(String streetNumber) {
             this.streetNumber = streetNumber;
+            return this;
+        }
+
+        public Builder setStreetName(String streetName) {
+            this.streetName = streetName;
             return this;
         }
 
@@ -138,6 +154,7 @@ public class Address {
         public Builder copy(Address address) {
             this.addressId = address.addressId;
             this.streetNumber = address.streetNumber;
+            this.streetName = address.streetName;
             this.suburb = address.suburb;
             this.city = address.city;
             this.zipCode = address.zipCode;
